@@ -1,0 +1,35 @@
+ToDo:
+1. Configure Apache for Forward Secrecy
+
+
+Installed:
+1. certbot (https://certbot.eff.org)
+2. Let's Encrypt certificates
+3. automatic renewal (monthly)
+
+
+
+Configuration:
+Key:	RSA 2048 bits (e 65537)
+Signature algorithm:	SHA256withRSA
+Protocols:      TLS 1.2	Yes
+                TLS 1.1	Yes
+                TLS 1.0	Yes
+                SSL 3	No
+                SSL 2	No
+
+incompatible with:
+Java 6u45   No SNI 2	Incorrect certificate because this client doesn't support SNI
+RSA 2048 (SHA1)   |  TLS 1.0  |  TLS_RSA_WITH_AES_128_CBC_SHA
+
+Android 2.3.7   No SNI 2	Incorrect certificate because this client doesn't support SNI
+RSA 2048 (SHA1)   |  TLS 1.0  |  TLS_RSA_WITH_AES_128_CBC_SHA
+
+IE 6 / XP   No FS 1	  No SNI 2	Server closed connection
+
+IE 8 / XP   No FS 1	  No SNI 2	Incorrect certificate because this client doesn't support SNI
+RSA 2048 (SHA1)   |  TLS 1.0  |  TLS_RSA_WITH_3DES_EDE_CBC_SHA
+
+
+
+source: https://www.ssllabs.com/ssltest/analyze.html?d=project_tester.de

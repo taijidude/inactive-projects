@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<table border=1px>
+<tr>
+	<th>URL</th>
+	<th>Methode</th>
+	<th>Parameter</th>
+	<th>Rueckgabewert</th>
+	<th>Beschreibung</th>
+</th>
+<tr>
+    <tr>
+    <td>/account</td>
+    <td>POST</td>
+    <td>Die Id des neuen Accounts</td>
+    <td>Legt einen neuen Account an.</td>
+</tr>
+<tr>
+    <td>/account</td>
+    <td>PUT</td>
+    <td></td>
+    <td>Aktualisiert einen Account.</td>
+</tr>
+<tr>
+    <td>/account</td>
+    <td>GET</td>
+    <td>Eine Liste JSON Daten über alle Accounts.</td>
+    <td>Liest alle Accounts aus.</td>
+</tr>
+<tr>
+    <td>/account/{id}</td>
+    <td>GET</td>
+    <td>Die kompletten JSON Daten des Accounts Beispiel: {"id":0,"birthyear":1991,"sex":"m", "username":"John","city":"berlin","password":"passwort", "email":"testmail@gmail.com"}</td>
+    <td>Liest einen Account anhand einer ID aus.</td>
+</tr>
+<tr>
+    <td>/account/{id}</td>
+    <td>DELETE</td>
+    <td></td>
+    <td>Einzelnen Nutzer anhand der ID löschen</td>
+</tr>
+<tr>
+    <td>/account/auth</td>
+    <td>GET</td>
+    <td>Wenn Password und Nutzername in Kombination in der Datenbank gefunden werden gibts true zurück.  Ansonsten kommt false zurück.</td>
+    <td>Über diese URL können kann festgestellt werden, ob Passwort und Nutzername zu einem legitimen Nutzer gehören.</td>
+</tr>
+<tr>
+    <td>/category</td>
+    <td>POST</td>
+    <td>Die Id der neuen Category.</td>
+    <td>Legt eine neue Category auf der Datenbank an.</td>
+</tr>
+<tr>
+    <td>/category/{id}</td>
+    <td>GET</td>
+    <td>Die Category im Jsonformat. Beispiel: {"id":191,"text":"FASHION"}</td>
+    <td>Liest eine Category anhand ihrer Id aus.</td>
+</tr>
+<tr>
+    <td>/category/{id}</td>
+    <td>DELETE</td>
+    <td></td>
+    <td>Löscht eine Kategorie anhand einer entsprechenden Id.</td>
+</tr>
+<tr>
+    <td>/hashtag</td>
+    <td>POST</td>
+    <td>Die Id des neu erstellten hashtags.</td>
+    <td>Erstellt einen neuen Hashtag in der Datenbank.</td>
+</tr>
+<tr>
+    <td>/hashtag/{id}</td>
+    <td>GET</td>
+    <td>Die Daten des Hashtags im Json Format {"id":243,"text":"#hashtag"}</td>
+    <td>Liest den Text eines Hashtags anhand seiner ID aus</td>
+</tr>
+<tr>
+    <td>/hashtag</td>
+    <td>GET</td>
+    <td>Eine Liste alle Hashtags im Json Format</td>
+    <td>Liest alle Hashtags aus.</td>
+</tr>
+<tr>
+    <td>/hashtag/{id}</td>
+    <td>DELETE</td>
+    <td>---</td>
+    <td>Löscht einen Hashtag anhand einer ID.</td>
+</tr>
+<tr>
+    <td>/project</td>
+    <td>POST</td>
+    <td>Id des gespeicherten Projects</td>
+    <td>Speichert ein neues Projekt auf der Datenbank.</td>
+</tr>
+<tr>
+    <td>/project</td>
+    <td>PUT</td>
+    <td></td>
+    <td>Aktualisiert ein bestehendes Projekt. Wie bei der Projekterstelltung muss das komplette Json an die Rest API übergeben werden.</td>
+</tr>
+<tr>
+    <td>/project</td>
+    <td>GET</td>
+    <td>Eine JSON Liste aller bislang angelegten Projekte</td>
+    <td>Liest alle bestehenden Projekte aus.</td>
+</tr>
+<tr>
+    <td>/project/{id}</td>
+    <td>GET</td>
+    <td>Die Json Daten des Projekts  {"id":1,"name":"project1", "location":"berlin1", "description":"beschreibung1", "specialFeatures":"Das macht es so besonders!1", "motivation":"motivation1", "expirationDate":1456950854730, "accountId":1,"hashtags":[]}</td>
+    <td>Liest ein bestimmtes Projekt anhand einer ProjektId aus.</td>
+</tr>
+<tr>
+    <td>/project/{id}</td>
+    <td>DELETE</td>
+    <td></td>
+    <td>Löscht ein bestimmtes Projekt anhand seiner ProjektId</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/hashtags/{hashtagId}</td>
+    <td>POST</td>
+    <td></td>
+    <td>Fügt ein existierendes Hashtag anhand seiner Id einem bestimmten Projekt hinzu.</td>
+</tr>
+<tr>
+    <td>/project/{projectId/hashtags/{hashtagId}}</td>
+    <td>DELETE</td>
+    <td></td>
+    <td>Entfernt die Zuordnung eines Hashtag zu einem bestimmten Projekt  anhand der ProjectId und der Hashtag Id.</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/categories/{categoryId}</td>
+    <td>POST</td>
+    <td></td>
+    <td>Ordnet eine existierende Kategory anhand der Kategory ID einem Projekt zu.</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/categories/{categoryId}</td>
+    <td>DELETE</td>
+    <td></td>
+    <td>Löscht die Zuordnung einer Kategory zu einem Projekt anhand der Id's</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/uploads/{uploadId}</td>
+    <td>POST</td>
+    <td></td>
+    <td>Ordnet einem Project einen Upload anhand der UploadId zu.</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/uploads/{uploadId}</td>
+    <td>DELETE</td>
+    <td></td>
+    <td>Löscht die Zuordnung eines Uploads zu einem Projekt anhand der Upload und der Project Id</td>
+</tr>
+<tr>
+    <td>/upload/{userId}</td>
+    <td>POST</td>
+    <td>Eine Liste der Dateinamen und ihrer zugeordneten Id's</td>
+    <td>Läd eine Menge von Dateien auf den Server. Die Datei selber wird im Verzeichnis Upload gespeichert und es wird ein Datensatz in der Uploadtabelle angelegt. Die Datei bekommt als neuen Namen die ID aus der Datenbank.</td>
+</tr>
+<tr>
+    <td>/upload/{uploadId}</td>
+    <td>DELETE</td>
+    <td></td>
+    <td>Löscht eine Datei und ihren zugehörigen Datensatz.</td>
+</tr>
+<tr>
+    <td>/upload/path/{uploadId}</td>
+    <td>GET</td>
+    <td>Der realtive Pfad auf dem Server</td>
+    <td>Liest den Dateipfad auf dem Server zur Datei aus.</td>
+</tr>
+
+
+</tr>
+
+
+
+
+</table>
+
+
+</body>
+</html> 

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>REST-API DOKU 18.09.20916</title>
+</head>
+<body>
+
+<table border=1px>
+<tr>
+	<th>URL</th>
+	<th>Methode</th>
+	<th>Parameter</th>
+	<th>zu übermittelnde JSON-Date</th>
+	<th>Rueckgabewert (succes)</th>
+	<th>Rueckgabewert (failure)</th>
+	<th>Beschreibung</th>
+</th>
+<!-- account -->
+<tr>
+    <td>/account</td>
+    <td>POST</td>
+    <td>Die Userdaten im Json Format im Requestbody</td>
+    <td>"{ ... }"</td>
+    <td>Die ID des neuen Accounts</td>
+    <td>???</th>
+    <td>Legt einen neuen Account mit einer neuen ID an. Speichert die JSON Daten. Gibt die ID des neu angelegten Accounts zurück. Error handling: ????</td>
+</tr>
+<tr>
+    <td>/account</td>
+    <td>PUT</td>
+    <td>Die aktualisierten Userdaten im JSON Format im Requestbody</td>
+    <td>"{ ... }"</td>
+    <td>fehlt</td>
+    <td>fehlt</td>
+    <td>Aktualisiert alle Daten eines Accounts.</td>
+</tr>
+<tr>
+    <td>/account</td>
+    <td>GET</td>
+    <td>keine</td>
+    <td>keine</td>
+    <td>Eine Liste mit JSON Daten aller Accounts.</td>
+    <td>???</td>
+    <td>Liest alle Accounts als JSON aus.</td>
+</tr>
+<tr>
+    <td>/account/{id}</td>
+    <td>GET</td>
+    <td>Die ID des Projekts in der URL</td>
+    <td>keine</td>
+    <td>Die kompletten JSON Daten eines Accounts mit der angegeben ID. Beispiel: {"id":0,"birthyear":1991,"sex":"m", "username":"John","city":"berlin","password":"passwort", "email":"testmail@gmail.com"}</td>
+    <td>????</td>
+    <td>Liest einen Account anhand einer ID aus.</td>
+</tr>
+<tr>
+    <td>/account/{id}</td>
+    <td>DELETE</td>
+    <td>Die ID des Accounts in der URL</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>???</td>
+    <td>Einen Nutzer anhand der ID löschen. </td>
+</tr>
+<tr>
+    <td>/account/auth</td>
+    <td>GET</td>
+    <td>Die credentials des Users im ....</td>
+    <td>keine</td>
+    <td>Eine signierte JWT des Users mit seinen Profildaten im payload des JWT</td>
+    <td>in progress .... Aktueller Stand: Wenn Password und Nutzername in Kombination in der Datenbank gefunden werden gibts true zurück.  Ansonsten kommt false zurück.</td>
+    <td>Über diese URL können kann festgestellt werden, ob Passwort und Nutzername zu einem legitimen Nutzer gehören.</td>
+</tr>
+
+<!-- answer -->
+
+<tr>
+    <td>/answer/{answerId}</td>
+    <td>GET</td>
+    <td>ie Id der auszulesenden Antwort</td>
+    <td>keine</td>
+    <td>Die Daten der Antwort im Json Format. </td>
+    <td>DataNotFoundException</td>
+    <td>Liest eine Antwort anhand ihrer Id aus</td>
+</tr>
+<tr>
+    <td>/answer/{answerId}</td>
+    <td>PUT</td>
+    <td>?????</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Liest eine Antwort anhand ihrer Id aus</td>
+</tr>
+<tr>
+    <td>/answer/{answerId}</td>
+    <td>DELETE</td>
+    <td>Die ID der Answer, die gelöscht werden soll in der URL</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>???</td>
+    <td>Löscht eine answer anhand der ID </td>
+</tr>
+
+
+
+
+
+<!-- category -->
+
+<tr>
+    <td>/category</td>
+    <td>POST</td>
+    <td>Den Namen der neuen Kategorie im JSON-Format im RequestBody</td>
+    <td>{ ... }</td>
+    <td>Die Id der neuen Category.</td>
+    <td>DataAlreadyExistsException</td>
+    <td>Legt eine neue Category mit einer Bezeichnung X auf der Datenbank an und gibt die ID zurück.</td>
+</tr>
+<tr>
+    <td>/category/{id}</td>
+    <td>GET</td>
+    <td>Die ID der Kategorie in der URL</td>
+    <td>keine</td>
+    <td>Die Category im Jsonformat. Beispiel: {"id":191,"text":"FASHION"}</td>
+    <td>DataNotFoundException</td>
+    <td>Liest eine Kategorie anhand ihrer Id aus und gibt eine JSON Datei mit der Bezeichnung zurück.</td>
+</tr>
+<tr>
+    <td>/category/{id}</td>
+    <td>DELETE</td>
+    <td>die ID der Kategorie in der URL</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>????</td>
+    <td>Löscht eine Kategorie anhand einer entsprechenden Id.</td>
+</tr>
+
+<!-- feedback -->
+
+<tr>
+    <td>/feedback/{feedbackId}</td>
+    <td>GET</td>
+    <td>Die Id des gesuchten Feedbacks</td>
+    <td>keine</td>
+    <td>Die Feedbackdaten im Json Format.</td>
+    <td>DataNotFoundException</td>
+    <td>Liest ein Feedback anhand der ID aus.</td>
+</tr>
+<tr>
+    <td>/feedback/{feedbackId}</td>
+    <td>DELETE</td>
+    <td>Die Id des zu lˆschenden Feedbacks</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Lˆscht ein Feedback anhand der ¸bergebenen Id</td>
+</tr>
+<tr>
+    <td>/feedback/{feedbackId}</td>
+    <td>PUT</td>
+    <td>Das komplette Feedback im Json Format</td>
+    <td>{ ... }</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Lˆscht ein Feedback anhand der ¸bergebenen Id</td>
+</tr>
+<tr>
+    <td>/feedback/{feedbackId}/answer/{accountId}</td>
+    <td>POST</td>
+    <td>Die Id des zu beantwortenden Feedbacks in der URL, Die Id des Accounts, von dem die Antwort verfasst wird in der URL. Der Antworttext wird im Body uebergeben. </td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Speichert die Antwort auf ein Feedback.</td>
+</tr>
+
+
+
+
+
+
+
+<!-- hashtag -->
+
+<tr>
+    <td>/hashtag</td>
+    <td>POST</td>
+    <td>Die Bezeichnung des neuen hashtags im RequestBody</td>
+    <td>keine</td>
+    <td>Die neue Id des neu erstellten hashtags.</td>
+    <td>????</td>
+    <td>Erstellt einen neuen Hashtag mit der Bezeichnung [String] in der Datenbank. Error handling?</td>
+</tr>
+<tr>
+    <td>/hashtag/{id}</td>
+    <td>GET</td>
+    <td>die ID des hashtags in der URL</td>
+    <td> keine</td>
+    <td>Die Daten des Hashtags im Json Format {"id":243,"text":"#hashtag"}</td>
+    <td>DataNotFoundException</td>
+    <td>Liest den Text eines Hashtags anhand seiner ID aus. Mit # oder ohne #?</td>
+</tr>
+<tr>
+    <td>/hashtag</td>
+    <td>GET</td>
+    <td>keine</td>
+    <td>keine</td>
+    <td>Eine Liste alle Hashtags im JSON-Format.</td>
+    <td>????</td>
+    <td>Liest alle vorhandene Hashtags aus und gibt sie als JSON-Datei zurück.</td>
+</tr>
+<tr>
+    <td>/hashtag/{id}</td>
+    <td>DELETE</td>
+    <td>DIe ID des hastgas in der URL</td>
+    <td>keine</td>
+    <td>????</td>
+    <td>???</td>
+    <td>Löscht einen Hashtag anhand seiner ID. Error handling?</td>
+</tr>
+
+
+<!-- like-->
+<tr>
+    <td>/like/project/{projectId}/{userId}</td>
+    <td>POST</td>
+    <td>Die ProjectId und die userId des neuen likes in der URL</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>DataAlreadyExistsException, DataNotFoundException</td>
+    <td>Erstellt einen neuen Projekt-like von einem user mit einer ID zu einem Projekt mit einer ID.</td>
+</tr>
+<tr>
+    <td>/like/feedback/{feedbackId}/{userId}</td>
+    <td>POST</td>
+    <td></td>
+    <td>keine</td>
+    <td>Die neue Id des neu erstellten likes.</td>
+    <td></td>
+    <td>Erstellt einen neuen feedback-like von einem user mit einer ID zu einem Feedback mit einer ID.</td>
+</tr>
+<tr>
+    <td>/like/answer/{answerId}/{userId}</td>
+    <td>POST</td>
+    <td>URL</td>
+    <td>keine</td>
+    <td>Die neue Id des neu erstellten answer-likes</td>
+    <td>????</td>
+    <td>Erstellt einen neuen answer-like von einem user mit einer ID zu einem answer mit einer ID.</td>
+</tr>
+<tr>
+    <td>/like/{likeId}</td>
+    <td>DELETE</td>
+    <td>URL</td>
+    <td>keine</td>
+    <td>????</td>
+    <td>???</td>
+    <td>Löscht einen ein Like anhand seiner ID. Error handling?</td>
+</tr>
+<tr>
+    <td>/like/project/{projectId}</td>
+    <td>GET</td>
+    <td>URL</td>
+    <td>keine</td>
+    <td>Liste aller likes eines Projekts im JSON-Format</td>
+    <td>DataNotFoundException</td>
+    <td>Eine Liste alles likes im JSON-Format zu einem Project mit einer ID.</td>
+</tr>
+<tr>
+    <td>/like/feedback/{feedbackId}</td>
+    <td>GET</td>
+    <td>URL</td>
+    <td>keine</td>
+    <td>Liste aller likes eines Feedbacks im JSON-Format</td>
+    <td>DataNotFoundException</td>
+    <td>Eine Liste alles likes im JSON-Format zu einem Project mit einer ID.</td>
+</tr>
+<tr>
+    <td>/like/answer/{answerId}</td>
+    <td>GET</td>
+    <td>URL</td>
+    <td>keine</td>
+    <td>Liste aller likes einer answer im JSON-Format</td>
+    <td>DataNotFoundException</td>
+    <td>Eine Liste alles likes im JSON-Format zu einem Project mit einer ID.</td>
+</tr>
+
+
+
+<!-- project -->
+
+<tr>
+    <td>/project</td>
+    <td>POST</td>
+    <td>keine</td>
+    <td>keine</td>
+    <td>Id des gespeicherten Projects</td>
+    <td>DataNotFoundException</td>
+    <td>Speichert ein neues Projekt mit einer neuen ID in der Datenbank.</td>
+</tr>
+<tr>
+    <td>/project</td>
+    <td>PUT</td>
+    <td>Die aktualisierten JSON-Daten des Projekts.</td>
+    <td>{ ... }</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Aktualisiert ein bestehendes Projekt. Wie bei der Projekterstelltung muss das komplette Json an die Rest API übergeben werden.</td>
+</tr>
+<tr>
+    <td>/project</td>
+    <td>GET</td>
+    <td>keine</td>
+    <td>keine</td>
+    <td>Eine JSON Liste aller bislang angelegten Projekte</td>
+    <td></td>
+    <td>Liest alle bestehenden Projekte aus.</td>
+</tr>
+<tr>
+    <td>/project/{id}</td>
+    <td>GET</td>
+    <td>Die ID des Projekts in der URL</td>
+    <td>keine</td>
+    <td>Die JSON Daten des Projekts  {"id":1,"name":"project1", "location":"berlin1", "description":"beschreibung1", "specialFeatures":"Das macht es so besonders!1", "motivation":"motivation1", "expirationDate":1456950854730, "accountId":1,"hashtags":[]}</td>
+    <td>DataNotFOundException</td>
+    <td>Liest ein bestimmtes Projekt anhand seiner ProjektId aus.</td>
+</tr>
+<tr>
+    <td>/project/{id}</td>
+    <td>DELETE</td>
+    <td>Die ID des Projects in der URL</td>
+    <td>keine</td>
+    <td>???</td>
+    <td>???</td>
+    <td>Löscht ein bestimmtes Projekt anhand seiner ProjektId</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/hashtags/{hashtagId}</td>
+    <td>POST</td>
+    <td>Die ProjectId und die hashtagId in der URL</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Fügt ein existierendes Hashtag anhand seiner Id einem bestimmten Projekt hinzu.</td>
+</tr>
+<tr>
+    <td>/project/{projectId/hashtags/{hashtagId}}</td>
+    <td>DELETE</td>
+    <td>Die ProjectId und die hashtagId in der URL</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Entfernt die Zuordnung eines Hashtag zu einem bestimmten Projekt  anhand der ProjectId und der Hashtag Id.</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/categories/{categoryId}</td>
+    <td>POST</td>
+    <td>Die ProjectId und die CategoryId (existiert).</td>
+    <td>keine
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Ordnet eine existierende Kategory anhand der Kategory ID einem Projekt zu.</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/categories/{categoryId}</td>
+    <td>DELETE</td>
+    <td>Die projectId und die categoryId in der URL, die gelöscht werden soll.</td>
+    <td>keine</td>
+    <td>Http.Status.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Löscht die Zuordnung einer Kategory zu einem Projekt anhand der Id's</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/uploads/{uploadId}</td>
+    <td>POST</td>
+    <td>Die projectId und die uploadId in der URL.</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>DataNotFoundException</td>
+    <td>Ordnet einem Project einen Upload anhand der UploadId zu.</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/uploads/{uploadId}</td>
+    <td>DELETE</td>
+    <td>Die projectId und die uploadId in der URL, die gelöscht werden soll</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <Td>DataNotFoundException</td>
+    <td>Löscht die Zuordnung eines Uploads zu einem Projekt anhand der Upload und der Project Id</td>
+</tr>
+<tr>
+    <td>/project/{projectId}/feedback/{accountId}</td>
+    <td>POST</td>
+    <td>Die projectId und die uploadId in der URL, die gelöscht werden soll</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <Td>DataNotFoundException</td>
+    <td>Löscht die Zuordnung eines Uploads zu einem Projekt anhand der Upload und der Project Id</td>
+</tr>
+
+
+
+
+<!-- upload -->
+
+<tr>
+    <td>/upload/{userId}</td>
+    <td>POST</td>
+    <td>Die userID in der URL</td>
+    <td>keine</td>
+    <td>Eine Liste der Dateinamen und ihrer zugeordneten Id's im JSON-Format.</td>
+    <td>IOException</td>
+    <td>??? Läd eine Menge von Dateien auf den Server. Die Datei selber wird im Verzeichnis Upload gespeichert und es wird ein Datensatz in der Uploadtabelle angelegt. Die Datei bekommt als neuen Namen die ID aus der Datenbank.</td>
+</tr>
+<tr>
+    <td>/upload/{uploadId}</td>
+    <td>DELETE</td>
+    <td>die Id's des Uploads</td>
+    <td>keine</td>
+    <td>HttpStatus.OK</td>
+    <td>IOException</td>
+    <td>Löscht eine Datei und ihren zugehörigen Datensatz.</td>
+</tr>
+<tr>
+    <td>/upload/path/{uploadId}</td>
+    <td>GET</td>
+    <td>Die Id des Uploads</td>
+    <td>keine</td>
+    <td>Der realtive Pfad zur Datei auf dem Server</td>
+    <td>IOException</td>
+    <td>Liest den Dateipfad auf dem Server zur Datei mit einer ID aus.</td>
+</tr>
+
+
+</tr>
+
+
+
+
+</table>
+
+
+</body>
+</html> 

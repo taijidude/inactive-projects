@@ -1,0 +1,17 @@
+Folgende Schritte sind nötig um eine Entwicklungsumgebung für project_tester einzurichten:
+* Java installieren. Die aktuellste Version des JDK installieren. (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* Maven installieren. Hier wird ebenfalls die aktuellste Version benötigt:
+Download: https://maven.apache.org/download.cgi
+Installationsanleitung: https://maven.apache.org/install.html
+* Eclipse installieren. Auch hier einfach die aktuellste Version nutzen.
+Download: https://eclipse.org/downloads/
+* Tomcat installieren. Hier sollte immer gegen die Version gearbeitet werden, die momentan auf dem Produktionsserver läuft. 
+Aktuell handelt es dabei um die Version: 8.32
+* Den Xampp installer für Windows runterladen und installieren. Das enthält eine fertig konfiguierte Mysql Datenbank, die wir für Entwicklungszwecke nutzen:
+https://www.apachefriends.org/de/download.html
+* Git installieren
+* Sicherstellen, ob ein Bitbucket User angelegt wurde.
+* Git Repo auschecken. Das aktuelle Trunk Repository findet sich unter: <Repo Url>
+* User auf der Datenbank anlegen.
+* SQL Script einspielen (project_tester.sql). 
+* Datenbank Verbindungsdaten eintragen (config.properties). 
