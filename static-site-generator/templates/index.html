@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Programmier-Notizen</title>
+<link rel="stylesheet" type="text/css" href="resources/stylesheets/repeatingStyles.css">
+<link href="resources/stylesheets/prism.css" rel="stylesheet" type="text/css" />
+<script src="resources/js/prism.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="header" id="pageheader">
+        <h1 id="title">Programmier-Notizen</h1>
+        <h1 id="info"><a href="./static/about.html">about</a></h1>
+    </div>    
+
+    {% for art in articlesToPrint %}
+        {{ art.feedHtml }}
+    {% endfor %}
+    
+</body>
+</html> 

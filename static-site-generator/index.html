@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Programmier-Notizen</title>
+<link href="content/resources/stylesheets/repeatingStyles.css"  rel="stylesheet" type="text/css" >
+<link href="content/resources/stylesheets/prism.css" rel="stylesheet" type="text/css" />
+<script src="content/resources/js/prism.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="header" id="pageheader">
+    <h1 id="title"><a href="index.html">Programmier-Notizen</a></h1>
+    <h1 id="info"><a href="about.html">about</a></h1>
+</div>
+
+<div id="article">
+    <div class="header">
+        <h3 id="title">Netter Talk mit einer Unix Einführung...</h3>
+        <h3 id="info">22.5.2019</h3>
+    </div>
+    <div class="content">
+        Bin neulich über den folgenden Vortrag bei Youtube gestossen. Im Youtube Channel der GOTO Conferences. Der ganze Channel ist einen Blick wert, da gibt es ziemlich viel interessantes Zeug. 
+        <a href="https://www.youtube.com/user/GotoConferences">GOTO</a> Das Thema das folgenden Vortrag ist Unix Power Usage. Er hat mich aus zwei Gründen beeindruckt.
+        Erstens weil der Typ den Vortrag komplett aus dem vi - Editor heraus hält und das auch noch ganz gut klappt. 
+        Das hat den vi wieder auf meiner Liste 'muss ich mir mal anschauen' weit nach oben befördert. 
+        Außerdem bin ich auf einen weiteren Gedanken kommen. Während des Vortrags wird betont, das Unix(Linux) extrem gut darin ist mit Dateien / Textdateien 
+        umzugehen. Im Buch "Pragmatic Programmer" wird darüber gesprochen, das Text ja der "Werkstoff" des Entwicklers ist, so wie zum Beispiel für den Tischler Holz. 
+        Wir haben hier also ein Betriebssystem, für das der Kern dieser Arbeit eines Entwicklers tief eingebacken ist.
+        
+        <p/>
+        <iframe width="560" height="315" class="item"
+                src="https://www.youtube.com/embed/4Y0tOi7QWqM" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe> 
+        <p/>
+    </div>
+    <div class="footer"/>
+</div>
+
+<div id="article">
+    <div class="header">
+        <h3 id="title">Bash - Mit cut einen Substring rausschneiden</h3>
+        <h3 id="info">22.5.2019</h3>
+    </div>
+    <div class="content">
+        <pre><code class="language-bash">~ $ echo "Das ist ein Test" | cut -c 5-7
+    ist
+        </code></pre> 
+        <p/>
+    </div>
+    <div class="footer"/>
+</div>
+
+<div id="article">
+    <div class="header">
+        <h3 id="title">Feststellen ob ein bestimmtes Item in einem Stream enthalten ist</h3>
+        <h3 id="info">21.5.2019</h3>
+    </div>
+    <div class="content">
+        Um festzustellen, ob ein Element in einem Stream enthalten ist, war mein erster Ansatz folgender: 
+        <pre><code class="language-java">return customers
+            .stream()
+            .filter(customer -> customer.getName().equals("Möller"))
+            .findFirst()
+            .isPresent();
+        </code></pre> 
+        Durch eine Sonar Qube Analyse bin ich auf eine bessere Variante aufmerksam geworden: <br/>
+        <pre><code class="language-java">return customers
+            .stream()
+            .anyMatch(customer -> customer.getName().equals("Möller"));</code></pre>
+    </p>
+    </div>
+    <div class="footer"/>
+</div>
+
+<div id="article">
+    <div class="header">
+        <h3 id="title">StringBuilder statt normaler String Verkettung</h3>
+        <h3 id="info">20.5.2019</h3>
+    </div>
+    <div class="content">
+        Die String Verkettung in Java ist ziemlich imperformant. Das man stattdessen eher einen StringBuilder nutzen
+        sollte, ist denke ich einigermaßen bekannt.
+
+        Also statt sowas: <br/>
+
+        <pre><code class="language-java">String output = "Das ist "+username+"! Unser neuer Mitarbeiter."
+                    +  "Er hat am "+startDate+" bei uns angefangen!"</code></pre> 
+        lieber sowas: <br/>
+        <pre><code class="language-java">String output = new StringBuilder("Das ist ")
+                        .append(username)
+                        .append("! Unser neuer Mitarbeiter. Er hat am ")  
+                        .append(startDate)
+                        .append("bei uns angefangen!").toString();
+        </code></pre>
+
+        <b>Aber...</b> ein StringBuilder kann auch mit einer bestimmten Länge initiatlisiert werden. 
+        Laut Joshua Bloch (siehe Effective Java) bringt das nochmal einen x2 Faktor an Performance. 
+        Der String Builder ohne feste Längenangabe ist ca x5 performanter als die normale String Verkettung. 
+        Wenn ein StringBuilder mit einer passenden Länge initialisiert wird, kann das bis zu einer 7x Performance Verbesserung führen.
+        <p/>
+    </div>
+    <div class="footer"/>
+</div>
+
+</body>
+</html> 

@@ -1,0 +1,16 @@
+<div id="article">
+    <div class="header">
+        {% if context == 'page' %}
+        <h3 id="title">{{ title }} </h3>  
+        {% elif context == 'feed' %}
+        <h3 id="title"><a href="{{ fileName }}">{{ title }}</a> </h3>
+        {% else %}
+        'Context Unknown'
+        {% endif %}
+        <h3 id="info">{{ info }}</h3>
+    </div>
+    <div id="content">
+        {{ content }}    
+    </div>
+    <div class="footer" ></div>
+</div>

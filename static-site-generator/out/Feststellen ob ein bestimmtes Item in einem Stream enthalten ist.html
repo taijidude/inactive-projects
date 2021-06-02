@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Programmier-Notizen</title>
+<link rel="stylesheet" type="text/css" href="resources/stylesheets/repeatingStyles.css">
+<link href="resources/stylesheets/prism.css" rel="stylesheet" type="text/css" />
+<script src="resources/js/prism.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="header" id="pageheader">
+    <h1 id="title"><a href="index.html">Programmier-Notizen</a></h1>
+    <h1 id="info"><a href="./static/about.html">about</a></h1>
+</div>
+
+<div id="article">
+    <div class="header">
+        
+        <h3 id="title">Feststellen ob ein bestimmtes Item in einem Stream enthalten ist </h3>  
+        
+        <h3 id="info">06.07.2019</h3>
+    </div>
+    <div id="content">
+        <p>Um festzustellen, ob ein Element in einem Stream enthalten ist, war mein erster Ansatz folgender:</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">return customers
+            .stream()
+            .filter(customer -&gt; customer.getName().equals(&quot;Möller&quot;))
+            .findFirst()
+            .isPresent();
+</code></pre>
+
+       </div>
+      <p>Durch eine Sonar Qube Analyse bin ich auf eine bessere Variante aufmerksam geworden:</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">    return customers
+        .stream()
+        .anyMatch(
+            customer -&gt; customer.getName().equals(&quot;Möller&quot;)
+        );
+</code></pre>
+
+       </div>
+          
+    </div>
+    <div class="footer" ></div>
+</div>    
+    
+</body>
+</html> 

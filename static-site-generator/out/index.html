@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Programmier-Notizen</title>
+<link rel="stylesheet" type="text/css" href="resources/stylesheets/repeatingStyles.css">
+<link href="resources/stylesheets/prism.css" rel="stylesheet" type="text/css" />
+<script src="resources/js/prism.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="header" id="pageheader">
+        <h1 id="title">Programmier-Notizen</h1>
+        <h1 id="info"><a href="./static/about.html">about</a></h1>
+    </div>    
+
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\Vortrag zu effektiver Kommunikation.html">Vortrag zu effektiver Kommunikation</a> </h3>
+        
+        <h3 id="info">14.07.2019</h3>
+    </div>
+    <div id="content">
+        <p><a href="https://www.youtube.com/watch?v=4wH-BI2YeX4">Mal wieder ein GOTO Vortrag</a></p>
+    
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\Interessanter Ansatz um Unit Tests zu strukturieren.html">Interessanter Ansatz um Unit Tests zu strukturieren</a> </h3>
+        
+        <h3 id="info">10.07.2019</h3>
+    </div>
+    <div id="content">
+        <p>Ich habe in einem Vortrag einen neuen Gedankenansatz gesehen um seine Unittests zu strukturieren. Der Testteil geht etwa bei Minute 42 los und dauert etwa drei Minuten.</p>
+
+       <div class="item">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ZsHMHukIlJY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       </div>
+      <p>Außerdem interessant: Bei Youtube lassen sich die Transkripte der Vorträge anzeigen...</p>
+<h1>BEISPIEL</h1>
+<p>Tests must Express the required functionality to the reader. Tests must be clear specifications. Tests should be organized as Scenarios. Pro Testklasse ein Scenario.</p>
+<p>So würde das in Java aussehen:</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">new
+</code></pre>
+
+       </div>
+          
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\Talk zu kognitiver Last.html">Talk zu kognitiver Last</a> </h3>
+        
+        <h3 id="info">10.07.2019</h3>
+    </div>
+    <div id="content">
+        <p><a href="https://www.youtube.com/watch?v=FKTxC9pl-WM">https://www.youtube.com/watch?v=FKTxC9pl-WM</a></p>
+    
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\Feststellen ob ein bestimmtes Item in einem Stream enthalten ist.html">Feststellen ob ein bestimmtes Item in einem Stream enthalten ist</a> </h3>
+        
+        <h3 id="info">06.07.2019</h3>
+    </div>
+    <div id="content">
+        <p>Um festzustellen, ob ein Element in einem Stream enthalten ist, war mein erster Ansatz folgender:</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">return customers
+            .stream()
+            .filter(customer -&gt; customer.getName().equals(&quot;Möller&quot;))
+            .findFirst()
+            .isPresent();
+</code></pre>
+
+       </div>
+      <p>Durch eine Sonar Qube Analyse bin ich auf eine bessere Variante aufmerksam geworden:</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">    return customers
+        .stream()
+        .anyMatch(
+            customer -&gt; customer.getName().equals(&quot;Möller&quot;)
+        );
+</code></pre>
+
+       </div>
+          
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\StringBuilder statt normaler String Verkettung.html">StringBuilder statt normaler String Verkettung</a> </h3>
+        
+        <h3 id="info">06.07.2019</h3>
+    </div>
+    <div id="content">
+        <p>Die String Verkettung in Java ist ziemlich imperformant. Das man stattdessen eher einen StringBuilder nutzen
+sollte, ist denke ich einigermaßen bekannt.</p>
+<p>Also statt sowas</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">String output = &quot;Das ist &quot;+username+&quot;! Unser neuer Mitarbeiter. Er hat am &quot;+startDate+&quot; bei uns angefangen!&quot;;
+</code></pre>
+
+       </div>
+      <p>lieber sowas</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">String output = new StringBuilder(&quot;Das ist &quot;)
+                        .append(username)
+                        .append(&quot;! Unser neuer Mitarbeiter. Er hat am &quot;)  
+                        .append(startDate)
+                        .append(&quot;bei uns angefangen!&quot;).toString();
+</code></pre>
+
+       </div>
+      <p><strong>Aber...</strong> ein StringBuilder kann auch mit einer bestimmten Länge initiatlisiert werden. 
+Laut Joshua Bloch (siehe Effective Java) bringt das nochmal einen x2 Faktor an Performance. 
+Der String Builder ohne feste Längenangabe ist ca x5 performanter als die normale String Verkettung. 
+Wenn ein StringBuilder mit einer passenden Länge initialisiert wird, kann das bis zu einer 7x Performance Verbesserung führen.</p>
+    
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\Bash - Mit Cut einen Substring herhausschneiden.html">Bash - Mit Cut einen Substring herausschneiden</a> </h3>
+        
+        <h3 id="info">05.07.2019</h3>
+    </div>
+    <div id="content">
+        
+      <div id="content-code">
+            <pre><code class="lang-Bash">$ echo &quot;Das ist ein Test | cut -c 5-7&quot;
+ist
+</code></pre>
+
+       </div>
+          
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\netterVortag.html">Netter Vortrag über die Arbeit mit Unix/Linux</a> </h3>
+        
+        <h3 id="info">03.07.2019</h3>
+    </div>
+    <div id="content">
+        <p>Bin neulich über den folgenden Vortrag bei Youtube gestossen. Im Youtube Channel der GOTO Conferences.
+Der ganze Channel ist einen Blick wert, da gibt es ziemlich viel interessantes Zeug.</p>
+<p><a href="https://www.youtube.com/user/GotoConferences">GOTO Youtube</a></p>
+<p>Das Thema das folgenden Vortrag ist Unix Power Usage. Er hat mich aus zwei Gründen beeindruckt.
+Erstens weil der Typ den Vortrag komplett aus dem vi - Editor heraus hält und das auch noch ganz gut klappt. 
+Das hat den vi wieder auf meiner Liste 'muss ich mir mal anschauen' weit nach oben befördert.</p>
+<p>Außerdem bin ich auf einen weiteren Gedanken kommen. Während des Vortrags wird betont, das Unix(Linux) extrem gut darin ist mit Dateien / Textdateien 
+umzugehen. Im Buch "Pragmatic Programmer" wird darüber gesprochen, das Text ja der "Werkstoff" des Entwicklers ist, so wie zum Beispiel für den Tischler Holz. 
+Wir haben hier also ein Betriebssystem, für das der Kern dieser Arbeit eines Entwicklers tief eingebacken ist.</p>
+
+       <div class="item">
+            <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/4Y0tOi7QWqM" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+       </div>
+          
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+        <div id="article">
+    <div class="header">
+        
+        <h3 id="title"><a href="..\out\Skripte lassen sich leichter in der Shell ausführen....html">Skripte lassen sich leichter in der Shell ausführen...</a> </h3>
+        
+        <h3 id="info">01.08.2019</h3>
+    </div>
+    <div id="content">
+        <p>Python skripte lassen sich in Shells mit etwas weniger Tipperei ausführen, wenn ihr folgendes macht:</p>
+<ul>
+<li>In der ersten Zeile des Skripte muss die sogenannte shebang Zeile untergebracht sein. (Keine Ahnung warum das so heißt...)</li>
+</ul>
+
+      <div id="content-code">
+            <pre><code class="lang-Python">#!/usr/bin/env python
+</code></pre>
+
+       </div>
+      <p>gs
+Beispiel:</p>
+<ul>
+<li>Ihr müsst in der  Shell die Datei ausführbar machen: </li>
+</ul>
+
+      <div id="content-code">
+            <pre><code class="lang-shell">chmod +x generate.py
+</code></pre>
+
+       </div>
+          
+    </div>
+    <div class="footer" ></div>
+</div>
+    
+    
+</body>
+</html> 

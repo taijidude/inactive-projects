@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Programmier-Notizen</title>
+<link rel="stylesheet" type="text/css" href="resources/stylesheets/repeatingStyles.css">
+<link href="resources/stylesheets/prism.css" rel="stylesheet" type="text/css" />
+<script src="resources/js/prism.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="header" id="pageheader">
+    <h1 id="title"><a href="index.html">Programmier-Notizen</a></h1>
+    <h1 id="info"><a href="./static/about.html">about</a></h1>
+</div>
+
+<div id="article">
+    <div class="header">
+        
+        <h3 id="title">StringBuilder statt normaler String Verkettung </h3>  
+        
+        <h3 id="info">06.07.2019</h3>
+    </div>
+    <div id="content">
+        <p>Die String Verkettung in Java ist ziemlich imperformant. Das man stattdessen eher einen StringBuilder nutzen
+sollte, ist denke ich einigermaßen bekannt.</p>
+<p>Also statt sowas</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">String output = &quot;Das ist &quot;+username+&quot;! Unser neuer Mitarbeiter. Er hat am &quot;+startDate+&quot; bei uns angefangen!&quot;;
+</code></pre>
+
+       </div>
+      <p>lieber sowas</p>
+
+      <div id="content-code">
+            <pre><code class="lang-Java">String output = new StringBuilder(&quot;Das ist &quot;)
+                        .append(username)
+                        .append(&quot;! Unser neuer Mitarbeiter. Er hat am &quot;)  
+                        .append(startDate)
+                        .append(&quot;bei uns angefangen!&quot;).toString();
+</code></pre>
+
+       </div>
+      <p><strong>Aber...</strong> ein StringBuilder kann auch mit einer bestimmten Länge initiatlisiert werden. 
+Laut Joshua Bloch (siehe Effective Java) bringt das nochmal einen x2 Faktor an Performance. 
+Der String Builder ohne feste Längenangabe ist ca x5 performanter als die normale String Verkettung. 
+Wenn ein StringBuilder mit einer passenden Länge initialisiert wird, kann das bis zu einer 7x Performance Verbesserung führen.</p>
+    
+    </div>
+    <div class="footer" ></div>
+</div>    
+    
+</body>
+</html> 
